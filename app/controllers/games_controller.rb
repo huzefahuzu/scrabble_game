@@ -4,7 +4,7 @@ class GamesController < ApplicationController
 
   # GET /games or /games.json
   def index
-    @games = Game.paginate(per_page: 10, page: params[:page] || 1)
+    @games = Game.order(created_at: :desc).paginate(per_page: 10, page: params[:page] || 1)
   end
 
   # GET /games/1 or /games/1.json
@@ -27,12 +27,12 @@ class GamesController < ApplicationController
 
   # POST /games or /games.json
   def create
-    binding.pry
     @game = Game.new(game_params)
 
     respond_to do |format|
       if @game.save
-        format.html { redirect_to @game, notice: "Game was successfully created." }
+
+        format.html { redirect_to @game, notice: "Configurations #{find_winning_player} on winning the game !!!" }
         format.json { render :show, status: :created, location: @game }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -47,7 +47,7 @@ class GamesController < ApplicationController
 
     respond_to do |format|
       if @game.update(game_params)
-        format.html { redirect_to @game, notice: "Game was successfully updated." }
+        format.html { redirect_to @game, notice: "Configurations #{find_winning_player} on winning the game !!!" }
         format.json { render :show, status: :ok, location: @game }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -60,7 +60,7 @@ class GamesController < ApplicationController
   def destroy
     @game.destroy
     respond_to do |format|
-      format.html { redirect_to games_url, notice: "Game was successfully destroyed." }
+      format.html { redirect_to games_url, notice: "Game was successfully deleted." }
       format.json { head :no_content }
     end
   end
@@ -69,6 +69,10 @@ class GamesController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_game
       @game = Game.find(params[:id])
+    end
+
+    def find_winning_player
+      @winning_player = @game.participants.order(player_total_score: :desc).first.player.full_name
     end
 
     def update_participants

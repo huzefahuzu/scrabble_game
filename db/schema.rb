@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_05_22_055944) do
+ActiveRecord::Schema.define(version: 2021_05_22_142728) do
 
   create_table "games", force: :cascade do |t|
     t.string "name"
@@ -31,10 +31,10 @@ ActiveRecord::Schema.define(version: 2021_05_22_055944) do
 
   create_table "players", force: :cascade do |t|
     t.string "full_name"
-    t.bigint "mobile"
+    t.integer "mobile"
     t.string "email"
-    t.integer "total_wins"
-    t.integer "total_loss"
+    t.integer "total_wins", default: 0
+    t.integer "total_loss", default: 0
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["full_name"], name: "index_players_on_full_name"
