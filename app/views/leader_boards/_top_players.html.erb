@@ -1,0 +1,27 @@
+<table class='table table-hover table-responsive-lg'>
+  <thead class="th-default">
+    <thead>
+      <tr>
+        <th>Player Name</th>
+        <th>Total Games</th>
+        <th>Average Game Score</th>
+      </tr>
+    </thead>
+  </thead>
+
+  <tbody>
+    <% @players.each do |player| %>
+      <tr>
+        <td style="width:50%">
+          <span><%= player.full_name %></span>
+        </td>
+        <td style="width:30%">
+          <span><%= player.participants.count %></span>
+        </td>
+        <td style="width:30%">
+          <span><%= (player.participants.sum(:player_total_score) / player.participants.count) %></span>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

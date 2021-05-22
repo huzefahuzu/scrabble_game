@@ -12,6 +12,9 @@
 
 ActiveRecord::Schema.define(version: 2021_05_22_142728) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "games", force: :cascade do |t|
     t.string "name"
     t.text "rules_to_play"
@@ -21,8 +24,8 @@ ActiveRecord::Schema.define(version: 2021_05_22_142728) do
 
   create_table "participants", force: :cascade do |t|
     t.integer "player_total_score"
-    t.integer "player_id", null: false
-    t.integer "game_id", null: false
+    t.bigint "player_id", null: false
+    t.bigint "game_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["game_id"], name: "index_participants_on_game_id"
@@ -31,7 +34,7 @@ ActiveRecord::Schema.define(version: 2021_05_22_142728) do
 
   create_table "players", force: :cascade do |t|
     t.string "full_name"
-    t.integer "mobile"
+    t.bigint "mobile"
     t.string "email"
     t.integer "total_wins", default: 0
     t.integer "total_loss", default: 0
