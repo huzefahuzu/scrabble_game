@@ -1,0 +1,30 @@
+<section class="mb-5">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-6 col-xs-12 col-md-6 col-sm-12 p-0">
+        <h2 class="pt-1">
+          <%= Game.model_name.human.pluralize %>
+        </h2>
+      </div>
+      <div class="col-lg-6 col-xs-12 col-md-6 col-sm-12 p-0">
+        <div class="float-right pb-3">
+          <button disabled="disabled" class="btn btn-outline-primary"><%= t('global.total')%> : <%= @games.size %></button>
+          <%= link_to 'New Game', new_game_path, class: "btn btn-primary" %>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-lg-12 col-xs-12 col-md-12 col-sm-12 p-0">
+        <div class="box-card relative">
+          <%= render "index", games: @games %>
+
+          <div class="digg_pagination">
+            <%= will_paginate @games %>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>

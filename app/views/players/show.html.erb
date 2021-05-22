@@ -1,0 +1,38 @@
+<div class="row">
+  <div class="col-lg-12">
+    <%= link_to 'Edit', edit_player_path(@player), class: "btn btn-outline-primary mb-3 mt-1 btn-space float-right" %>
+  </div>
+</div>
+
+<section class="mb-5">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12 col-xs-12 col-md-12 col-sm-12 p-0">
+        <div class="card">
+          <div class="card-header">
+            Player Details
+          </div>
+          <div class="card-body">
+            <div class="row">
+              <div class="col-md-6">
+                <label class="font-weight-bold" >Full Name: </label> <label class="left-margin"><%= @player.full_name %></label>
+              </div>
+              <div class="col-md-6">
+                <label class="font-weight-bold">Mobile: </label> <label class="left-margin"><%= @player.mobile %></label>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-md-6">
+                <label class="font-weight-bold" >Email: </label> <label class="left-margin"><%= @player.email %></label>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<%= link_to 'Edit', edit_player_path(@player) %> |
+<%= link_to 'Back', players_path %>

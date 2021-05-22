@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>ScrabbleGame</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+
+    <script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.11.1/jquery.validate.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/6.4.1/css/intlTelInput.css">
+  </head>
+
+  <body>
+    <header>
+      <nav class="navbar navbar-expand-lg fixed-top navbar-dark bg-dark">
+        <a class="navbar-brand" href="javascript:;">Scrabble Game</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <%= link_to 'Players', players_path, class: "nav-link" %>
+            </li>
+            <li class="nav-item">
+              <%= link_to 'Games', games_path, class: "nav-link" %>
+            </li>
+          </ul>
+        </div>
+      </nav>
+    </header>
+
+    <div class="mt-5 pt-5"></div>
+    <div class="container">
+      <% flash.each do |type, msg| %>
+        <% if type == "notice" %>
+          <div class="alert alert-success">
+        <% elsif type == "alert" %>
+          <div class="alert alert-danger">
+        <% else %>
+          <div class='alert alert-<%= "#{type}" %>'>
+        <% end %>
+        <a href="#" class="close" data-dismiss="alert">&#215;</a>
+        <div class="d-flex p-2 bd-highlight"><%= msg %></div>
+        </div>
+      <%   end %>
+
+      <%= yield %>
+    </div>
+  </body>
+</html>
+
+<script type="text/javascript">
+  setTimeout(function(){$('.alert').fadeOut();}, 3000);
+</script>

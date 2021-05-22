@@ -1,0 +1,38 @@
+<table class='table table-hover table-responsive-lg'>
+  <thead class="th-default">
+    <thead>
+      <tr>
+        <th><%= Player.human_attribute_name('full_name') %></th>
+        <th><%= Player.human_attribute_name('mobile') %></th>
+        <th><%= Player.human_attribute_name('email') %></th>
+        <th class="text-right"><%= t('global.action', count: 2) %></th>
+      </tr>
+    </thead>
+  </thead>
+
+  <tbody>
+    <% @players.each do |player| %>
+      <tr>
+        <td style="width:40%">
+          <span><%= player.full_name %></span>
+        </td>
+        <td style="width:20%">
+          <span><%= player.mobile %></span>
+        </td>
+        <td style="width:20%">
+          <span><%= player.email %></span>
+        </td>
+        <td style="width:20%">
+          <div class="dropdown text-right">
+            <a class="btn dropdown-toggle" href="javascript:;" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span>Actions</span></a>
+            <div class="dropdown-menu">
+              <%= link_to 'Show', player, class: "dropdown-item" %>
+              <%= link_to 'Edit', edit_player_path(player), class: "dropdown-item" %>
+              <%= link_to 'Destroy', player, method: :delete, class: "dropdown-item", data: { confirm: 'Are you sure?' } %>
+            </div>
+          </div>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

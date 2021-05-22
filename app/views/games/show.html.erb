@@ -1,0 +1,53 @@
+<div class="row">
+  <div class="col-lg-12">
+    <%= link_to 'Edit', edit_game_path(@game), class: "btn btn-outline-primary mb-3 mt-1 btn-space float-right" %>
+  </div>
+</div>
+
+<section class="mb-5">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12 col-xs-12 col-md-12 col-sm-12 p-0">
+        <div class="card">
+          <div class="card-header">
+            Game Details
+          </div>
+          <div class="card-body">
+            <div class="row">
+              <div class="col-md-6">
+                <label class="font-weight-bold" > Name: </label> <label class="left-margin"><%= @game.name %></label>
+              </div>
+              <div class="col-md-6">
+                <label class="font-weight-bold">Rules To Play: </label> <label class="left-margin"><%= @game.rules_to_play %></label>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="mt-3 pt-3"></div>
+
+        <div class="card">
+          <div class="card-header">
+            Game Results
+          </div>
+          <div class="card-body">
+
+            <% @gamers.each.with_index(1) do |participant, index| %>
+              <div class="row">
+                <div class="col-md-6">
+                  <label class="font-weight-bold" > Player <%= index %> Name: </label> <label class="left-margin"><%= participant.player.full_name %></label>
+                </div>
+                <div class="col-md-6">
+                  <label class="font-weight-bold"> Player <%= index %> Score: </label> <label class="left-margin"><%= participant.player_total_score %></label>
+                </div>
+              </div>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<%= link_to 'Edit', edit_game_path(@game) %> |
+<%= link_to 'Back', games_path %>

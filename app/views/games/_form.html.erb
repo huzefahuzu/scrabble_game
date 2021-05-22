@@ -1,0 +1,76 @@
+<section class="mb-5">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12 col-xs-12 col-md-12 col-sm-12 p-0">
+        <%= form_with(model: game, local: true) do |form| %>
+          <% if game.errors.any? %>
+            <div id="error_explanation">
+              <h2><%= pluralize(game.errors.count, "error") %> prohibited this game from being saved:</h2>
+
+              <ul>
+              <% game.errors.full_messages.each do |message| %>
+                <li><%= message %></li>
+              <% end %>
+              </ul>
+            </div>
+          <% end %>
+          <div class="card">
+            <div class="card-header">
+              Game Details
+            </div>
+            <div class="card-body">
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <%= form.label :name, class: "required" %>
+                    <%= form.text_field :name, class: "form-control", required: true %>
+                  </div>
+                </div>
+
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <%= form.label :rules_to_play, class: "required" %>
+                    <%= form.text_area :rules_to_play, class: "form-control" %>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="mt-2 pt-2"></div>
+
+          <div class="card">
+            <div class="card-header">
+              Game Results
+            </div>
+
+            <div class="card-body">
+              <%= form.fields_for :participants do |game_details| %>
+                <div class="row">
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <%= game_details.label "Gamer", class: "required" %>
+                      <%= game_details.collection_select(:player_id, Player.all, :id, :full_name, { prompt: 'Pick Gamer' }, class: "form-control")%>
+                    </div>
+                  </div>
+
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <%= game_details.label :player_total_score, class: "required" %>
+                      <%= game_details.number_field :player_total_score, class: "form-control" %>
+                    </div>
+                  </div>
+                </div>
+              <% end %>
+            </div>
+          </div>
+          <div class="form-group mt-3">
+            <%= form.submit class: "btn btn-primary" %>
+          </div>
+        <% end %>
+      </div>
+  </div>
+</section>
+
+
+

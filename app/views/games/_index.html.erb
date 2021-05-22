@@ -1,0 +1,34 @@
+<table class='table table-hover table-responsive-lg'>
+  <thead class="th-default">
+    <thead>
+      <tr>
+        <th><%= Game.human_attribute_name('name') %></th>
+        <th><%= Game.human_attribute_name('rules_to_play') %></th>
+        <th class="text-right"><%= t('global.action', count: 2) %></th>
+      </tr>
+    </thead>
+  </thead>
+
+  <tbody>
+    <% @games.each do |game| %>
+      <tr>
+        <td style="width:50%">
+          <span><%= game.name %></span>
+        </td>
+        <td style="width:30%">
+          <span><%= game.try(:rules_to_play) %></span>
+        </td>
+        <td style="width:20%">
+          <div class="dropdown text-right">
+            <a class="btn dropdown-toggle" href="javascript:;" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span>Actions</span></a>
+            <div class="dropdown-menu">
+              <%= link_to 'Show', game, class: "dropdown-item" %>
+              <%= link_to 'Edit', edit_game_path(game), class: "dropdown-item" %>
+              <%= link_to 'Destroy', game, method: :delete, class: "dropdown-item", data: { confirm: 'Are you sure?' } %>
+            </div>
+          </div>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
