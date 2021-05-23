@@ -54,3 +54,25 @@ The app has following features included:
 ## Security Point.
 
 We have added the CSRF token in requests by adding `protect_from_forgery` in the application controller.
+
+## Application UI/UX
+  * Welcome Page
+
+    * [Welcome Page](https://ibb.co/brJQ9cz)
+
+  * Leader board Screen
+
+    * [Leader board](https://ibb.co/vZ2XMqy)
+
+  * Player Details/Flow Screens
+
+    * [List Player Details](https://ibb.co/QQrm2py)
+    * [Add new Player](https://ibb.co/tpPP5Gp)
+    * [Player Details](https://ibb.co/D5d19T0)
+
+  * Game Creation Flows
+
+    * [Games List](https://ibb.co/GkJmRbH)
+    * [New Game](https://ibb.co/dgjXJV6)
+    * [Game details](https://ibb.co/QCRjPDb)
+
