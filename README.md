@@ -28,11 +28,11 @@ git clone git@github.com:huzefahuzu/scrabble_game.git
 ```
 ruby -v | rvm install 2.6.3
 ```
-3. Install dependencies
+3. Install Gems
 ```
 bundle install
 ```
-4. Initialize the database
+4. Create database and run migrations
 ```
 rails db:create db:migrate
 ```
