@@ -19,7 +19,7 @@
           <span><%= player.participants.count %></span>
         </td>
         <td style="width:30%">
-          <span><%= (player.participants.sum(:player_total_score) / player.participants.count) %></span>
+          <span><%= player_avg_score(player) %></span>
         </td>
       </tr>
     <% end %>

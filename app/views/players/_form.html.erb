@@ -2,7 +2,7 @@
   <div class="container">
     <div class="row">
       <div class="col-lg-12 col-xs-12 col-md-12 col-sm-12 p-0">
-        <%= form_with(model: player, local: true) do |form| %>
+        <%= form_with(model: player, local: true, class: "player_details") do |form| %>
           <% if player.errors.any? %>
             <div id="error_explanation">
               <h2><%= pluralize(player.errors.count, "error") %> prohibited this player from being saved:</h2>
@@ -29,7 +29,7 @@
 
                 <div class="col-md-6">
                   <div class="form-group">
-                    <%= form.label :mobile, class: "required" %>
+                    <%= form.label :mobile %>
                     <%= form.number_field :mobile, class: "form-control" %>
                   </div>
                 </div>
@@ -39,7 +39,7 @@
                 <div class="col-md-6">
                   <div class="form-group">
                     <%= form.label :email, class: "required" %>
-                    <%= form.text_field :email, class: "form-control" %>
+                    <%= form.email_field :email, class: "form-control", required: true  %>
                   </div>
                 </div>
               </div>
@@ -53,3 +53,7 @@
     </div>
   </div>
 </section>
+
+<script type="text/javascript">
+  $(".player_details").validate();
+</script>

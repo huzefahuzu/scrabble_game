@@ -3,8 +3,10 @@
     <thead>
       <tr>
         <th><%= Player.human_attribute_name('full_name') %></th>
-        <th><%= Player.human_attribute_name('mobile') %></th>
-        <th><%= Player.human_attribute_name('email') %></th>
+        <th><%= Player.human_attribute_name('total_wins') %></th>
+        <th><%= Player.human_attribute_name('total_loss') %></th>
+        <th> Average Score </th>
+        <th> Highest Score - Against </th>
         <th class="text-right"><%= t('global.action', count: 2) %></th>
       </tr>
     </thead>
@@ -12,17 +14,25 @@
 
   <tbody>
     <% @players.each do |player| %>
+      <% highest_score, against_player_name, at_date = get_high_score_details(player) %>
+
       <tr>
-        <td style="width:40%">
-          <span><%= player.full_name %></span>
+        <td style="width:25%">
+          <span><%= player.full_name.titleize %></span>
         </td>
-        <td style="width:20%">
-          <span><%= player.mobile %></span>
+        <td style="width:10%">
+          <span><%= player.total_wins %></span>
         </td>
-        <td style="width:20%">
-          <span><%= player.email %></span>
+        <td style="width:10%">
+          <span><%= player.total_loss %></span>
         </td>
-        <td style="width:20%">
+        <td style="width:15%">
+          <span><%= player_avg_score(player) %></span>
+        </td>
+        <td style="width:30%">
+          <span><%= highest_score %> <b> Against </b> <%= against_player_name.titleize %> <b> On </b> <br /> <%= at_date %></span>
+        </td>
+        <td style="width:10%">
           <div class="dropdown text-right">
             <a class="btn dropdown-toggle" href="javascript:;" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span>Actions</span></a>
             <div class="dropdown-menu">
