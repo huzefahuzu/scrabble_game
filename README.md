@@ -41,3 +41,16 @@ rails db:create db:migrate
 rails s
 ```
 
+## Application Features.
+
+The app has following features included:
+
+1. It will allow to create a player profile by entering the common details like name, email etc.
+2. After that, we can create multiple games which are played between this players where we also display who won the game after the game creation.
+3. We display a detailed leadboard where Top 10 highest scorers are displayed.
+4. On the member player listing page, we display detailed information of a player like total wins, loss, average score and highest score against whom and when.
+
+
+## Security Point.
+
+We have added the CSRF token in requests by adding `protect_from_forgery` in the application controller.
