@@ -30,7 +30,11 @@
           <span><%= player_avg_score(player) %></span>
         </td>
         <td style="width:30%">
-          <span><%= highest_score %> <b> Against </b> <%= against_player_name.titleize %> <b> On </b> <br /> <%= at_date %></span>
+          <% if highest_score == 'NA' %>
+            <span> NA </span>
+          <% else %>
+            <span><%= highest_score %> <b> Against </b> <%= against_player_name.titleize %> <b> On </b> <br /> <%= at_date %></span>
+          <% end %>
         </td>
         <td style="width:10%">
           <div class="dropdown text-right">
